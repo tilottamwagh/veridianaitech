@@ -5,23 +5,23 @@ import { Check, ArrowRight } from "lucide-react";
 
 export default function SupportAutomation() {
   return (
-    <div className="bg-black pt-20">
-      <section className="py-24 bg-[#080808]">
+    <div className="bg-[var(--navy)] pt-20">
+      <section className="py-24 bg-[var(--navy-2)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto">
-          <p className="section-label">Support Automation</p>
-          <h1 className="section-title mb-6">24/7 Intelligent<br /><span className="text-[#c5a059]">Customer Support</span></h1>
-          <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+          <p className="eyebrow">Support Automation</p>
+          <h1 className="h-section mb-6">24/7 Intelligent<br /><span className="text-[var(--teal)]">Customer Support</span></h1>
+          <p className="text-[var(--text-muted)] text-lg mb-10 leading-relaxed">
             Deploy AI-powered voice and chat agents that provide instant, accurate customer support around the clock, reducing costs while improving satisfaction.
           </p>
-          <Link href="/contact" className="gold-btn text-base">Get Started <ArrowRight className="w-4 h-4" /></Link>
+          <Link href="/contact" className="btn-primary text-base">Get Started <ArrowRight className="w-4 h-4" /></Link>
         </div>
       </section>
 
-      <section className="py-24 bg-black">
+      <section className="py-24 bg-[var(--navy)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="section-label">Support Features</p>
-            <h2 className="section-title mb-4">Everything you need to deliver<br />exceptional customer support at scale</h2>
+            <p className="eyebrow">Support Features</p>
+            <h2 className="h-section mb-4">Everything you need to deliver<br />exceptional customer support at scale</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -30,22 +30,22 @@ export default function SupportAutomation() {
               { title: "Smart Routing", desc: "Intelligently escalate complex issues to human agents when needed." },
               { title: "Multi-Channel Support", desc: "Consistent support across phone, chat, email, and social media." },
             ].map((f, i) => (
-              <div key={i} className="card-dark group">
-                <div className="w-8 h-0.5 bg-[#c5a059] mb-4 group-hover:w-12 transition-all" />
-                <h3 className="text-white font-bold text-lg mb-2">{f.title}</h3>
-                <p className="text-gray-400 text-sm">{f.desc}</p>
+              <div key={i} className="glass-card group">
+                <div className="w-8 h-0.5 bg-[var(--teal)] mb-4 group-hover:w-12 transition-all" />
+                <h3 className="text-[var(--text)] font-bold text-lg mb-2">{f.title}</h3>
+                <p className="text-[var(--text-muted)] text-sm">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-[#080808]">
+      <section className="py-24 bg-[var(--navy-2)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="section-title mb-6">Revolutionize Customer Support</h2>
-              <p className="text-gray-400 mb-8 leading-relaxed">
+              <h2 className="h-section mb-6">Revolutionize Customer Support</h2>
+              <p className="text-[var(--text-muted)] mb-8 leading-relaxed">
                 Our AI support automation enables businesses to provide instant, high-quality customer service at any scale, dramatically reducing response times and costs.
               </p>
               <ul className="space-y-3">
@@ -57,8 +57,8 @@ export default function SupportAutomation() {
                   "Free human agents for complex issues",
                   "Maintain consistent support quality 24/7",
                 ].map((pt, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-300 text-sm">
-                    <Check className="w-4 h-4 text-[#c5a059] mt-0.5 flex-shrink-0" />
+                  <li key={i} className="flex items-start gap-3 text-[var(--text-muted)] text-sm">
+                    <Check className="w-4 h-4 text-[var(--teal)] mt-0.5 flex-shrink-0" />
                     {pt}
                   </li>
                 ))}
@@ -70,9 +70,9 @@ export default function SupportAutomation() {
                 { val: "70%", label: "Cost Reduction" },
                 { val: "<30s", label: "Average Response Time" },
               ].map((s, i) => (
-                <div key={i} className="card-dark text-center py-8">
-                  <div className="text-5xl font-black text-[#c5a059] mb-2">{s.val}</div>
-                  <div className="text-gray-400 font-medium">{s.label}</div>
+                <div key={i} className="glass-card text-center py-8">
+                  <div className="text-5xl font-black text-[var(--teal)] mb-2">{s.val}</div>
+                  <div className="text-[var(--text-muted)] font-medium">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -80,12 +80,12 @@ export default function SupportAutomation() {
         </div>
       </section>
 
-      <section className="py-20 bg-black border-t border-white/5 text-center">
-        <h2 className="text-3xl font-black text-white mb-4">Ready to Transform Customer Support?</h2>
-        <p className="text-gray-400 mb-8">Join businesses providing world-class support with AI automation.</p>
+      <section className="py-20 bg-[var(--navy)] border-t border-[rgba(100,150,255,0.05)] text-center">
+        <h2 className="text-3xl font-black text-[var(--text)] mb-4">Ready to Transform Customer Support?</h2>
+        <p className="text-[var(--text-muted)] mb-8">Join businesses providing world-class support with AI automation.</p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link href="/contact" className="gold-btn">Schedule a Demo</Link>
-          <Link href="/about" className="ghost-btn">View Case Studies</Link>
+          <Link href="/contact" className="btn-primary">Schedule a Demo</Link>
+          <Link href="/about" className="btn-outline">View Case Studies</Link>
         </div>
       </section>
     </div>

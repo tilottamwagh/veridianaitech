@@ -2,206 +2,101 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check } from "lucide-react";
+import { Check, ArrowRight, Zap, Shield, BarChart2, Clock, Users, TrendingUp } from "lucide-react";
 import HowItWorks from "@/components/HowItWorks";
 import LiveDashboard from "@/components/LiveDashboard";
 
 const clients = [
-  { abbr: "ES", name: "Elevate Spa" },
-  { abbr: "OL", name: "Oberoi Law Firm" },
-  { abbr: "C21", name: "Century 21" },
-  { abbr: "LP", name: "LogisticsPro" },
-  { abbr: "TM", name: "Tata Motors" },
-  { abbr: "BSD", name: "Bright Smile Dental" },
-  { abbr: "SP", name: "Sterling Partners" },
-  { abbr: "DM", name: "Done Mortgage" },
+  "Elevate Spa", "Oberoi Law Firm", "Century 21", "LogisticsPro",
+  "Tata Motors", "Bright Smile Dental", "Sterling Partners", "Done Mortgage",
 ];
 
-const whatWeBuild = [
-  {
-    title: "Supercharge Your ERP Before You Replace It",
-    desc: "We embed AI directly into SAP, Salesforce, and Oracle — unlocking automation, predictive analytics, and 40%+ efficiency gains without a costly platform migration.",
-  },
-  {
-    title: "Software Built Around How You Actually Work",
-    desc: "Generic tools leave money on the table. We design bespoke applications that map exactly to your workflows — delivered on schedule, engineered to scale.",
-  },
-  {
-    title: "Fast, Secure Web Applications Your Customers Trust",
-    desc: "From enterprise portals to customer-facing platforms, we build high-performance web apps that hold up under load, rank in search, and drive conversions.",
-  },
-  {
-    title: "Put Your Business in Every Customer's Pocket",
-    desc: "Native iOS and Android apps that perform flawlessly, convert consistently, and connect to your back-end systems from day one — no workarounds needed.",
-  },
-  {
-    title: "Ship Confidently — We Break It Before Your Users Do",
-    desc: "Rigorous automated and manual testing across performance, security, and UX means you release software that works the first time, every time, at any scale.",
-  },
-  {
-    title: "Always On, Always Optimised — We've Got the Watch",
-    desc: "Proactive monitoring, regular patches, security updates, and on-call support keep your systems at peak performance so you can focus on running your business.",
-  },
+const services = [
+  { icon: Zap, title: "Supercharge Your ERP Without Replacing It", desc: "Embed AI directly into SAP, Salesforce, and Oracle — unlocking automation and 40%+ efficiency gains without a costly migration." },
+  { icon: TrendingUp, title: "Custom Software Built Around How You Work", desc: "Generic tools leave money on the table. We design bespoke applications that map exactly to your workflows — delivered on schedule, engineered to scale." },
+  { icon: Shield, title: "Fast, Secure Web Applications", desc: "From enterprise portals to customer-facing platforms, we build high-performance web apps that hold up under load and drive conversions." },
+  { icon: Users, title: "Put Your Business in Every Customer's Pocket", desc: "Native iOS and Android apps that perform flawlessly, convert consistently, and connect to your back-end systems from day one." },
+  { icon: BarChart2, title: "Ship Confidently — We Break It Before Users Do", desc: "Rigorous automated and manual testing across performance, security, and UX means you release software that works every time, at any scale." },
+  { icon: Clock, title: "Always On, Always Optimised", desc: "Proactive monitoring, regular patches, security updates, and on-call support keep your systems at peak performance 24/7." },
 ];
 
 const capabilities = [
-  {
-    title: "Kill Repetitive Work With Smart Workflows",
-    desc: "AI-powered automation handles rule-based tasks — including the edge cases — without human intervention. Your team stops doing admin and starts creating value.",
-  },
-  {
-    title: "Go Live in Days, Not Quarters",
-    desc: "Stop waiting months for results. Our rapid deployment gets automation running in your environment within days, with measurable savings from week one.",
-  },
-  {
-    title: "Turn Data Into Decisions, Automatically",
-    desc: "Real-time AI analytics surface optimisation opportunities, flag anomalies before they become problems, and measure ROI so you never fly blind.",
-  },
-  {
-    title: "Scale Without Adding Headcount",
-    desc: "Cloud-native infrastructure that handles 10x volume growth without rewrites, extra servers, or new hires. Pay for what you use, grow as fast as you want.",
-  },
-  {
-    title: "Bank-Level Security, Zero Compromises",
-    desc: "SOC 2 Type II certified, GDPR and HIPAA compliant. Your data is protected end-to-end while your automation runs free — no trade-offs between speed and safety.",
-  },
-  {
-    title: "Works With Every Tool You Already Use",
-    desc: "Native integrations with 300+ platforms — CRM, ERP, email, telephony, and more. AI automation drops into your existing stack. No rip-and-replace required.",
-  },
+  { title: "Kill Repetitive Work With Smart Workflows", desc: "AI-powered automation handles rule-based tasks — including the edge cases — without human intervention." },
+  { title: "Go Live in Days, Not Quarters", desc: "Our rapid deployment gets automation running in days, with measurable savings from week one." },
+  { title: "Turn Data Into Decisions, Automatically", desc: "Real-time AI analytics surface optimisation opportunities and flag anomalies before they become problems." },
+  { title: "Scale Without Adding Headcount", desc: "Cloud-native infrastructure that handles 10x volume growth without rewrites, extra servers, or new hires." },
+  { title: "Bank-Level Security, Zero Compromises", desc: "SOC 2 Type II certified, GDPR and HIPAA compliant. Speed and safety with zero trade-offs." },
+  { title: "Works With Every Tool You Already Use", desc: "Native integrations with 300+ platforms — CRM, ERP, email, telephony, and more. No rip-and-replace required." },
 ];
 
 const caseStudies = [
-  {
-    abbr: "ES",
-    name: "Elevate Spa",
-    quote: "Reception fully automated — staff now focus on guests, not phones.",
-    img: "/assets/Panoramic-SpaDay-dg1nqnrG.png",
-    stats: [
-      { val: "80%", label: "Admin Time Saved" },
-      { val: "95%", label: "Calls Answered" },
-      { val: "24/7", label: "Availability" },
-      { val: "$180K", label: "Annual Savings" },
-    ],
-  },
-  {
-    abbr: "OL",
-    name: "Oberoi Law Firm",
-    quote: "Client intake automated — lawyers spend more time in court, less on admin.",
-    img: "/assets/LawFirms-Cfw3No_8.jpg",
-    stats: [
-      { val: "78%", label: "Admin Time Saved" },
-      { val: "92%", label: "Calls Answered" },
-      { val: "24/7", label: "Availability" },
-      { val: "$240K", label: "Annual Savings" },
-    ],
-  },
-  {
-    abbr: "C21",
-    name: "Century 21",
-    quote: "Property research automated at scale — analysts focus on closing deals.",
-    img: "/assets/Real_Estate-daXMW61t.jpg",
-    stats: [
-      { val: "90%", label: "Data Extraction Automated" },
-      { val: "85%", label: "Analysis Time Saved" },
-      { val: "50K+", label: "Properties Analysed" },
-      { val: "$2.8M", label: "Annual Savings" },
-    ],
-  },
-  {
-    abbr: "LP",
-    name: "LogisticsPro",
-    quote: "End-to-end logistics automation — manual processing virtually eliminated.",
-    img: "/assets/Case_study_background_4_6d1a48d7-DbLnm7dm.png",
-    stats: [
-      { val: "95%", label: "Automation Rate" },
-      { val: "70%", label: "Time Savings" },
-      { val: "1K+", label: "Routes Optimised" },
-      { val: "$5M", label: "Annual Savings" },
-    ],
-  },
-];
-
-const whyUs = [
-  "70% average reduction in manual task time",
-  "60% lower operational overhead",
-  "95% automation success rate across deployments",
-  "Positive ROI within 90 days — guaranteed",
-];
-
-const handson = [
-  "Dedicated success manager from day one",
-  "Free white-glove implementation assistance",
-  "Personalised onboarding and staff training",
-  "Proactive optimisation — we don't wait to be asked",
-];
-
-const speed = [
-  "Live in days, not months — no long IT projects",
-  "AI trained on your business, not a generic template",
-  "Iterative improvements based on real call data",
-  "Scales instantly as your business grows",
+  { abbr: "ES", name: "Elevate Spa", quote: "Reception fully automated — staff now focus on guests, not phones.", img: "/assets/Panoramic-SpaDay-dg1nqnrG.png", stats: [{ val: "80%", label: "Admin Time Saved" }, { val: "95%", label: "Calls Answered" }, { val: "24/7", label: "Availability" }, { val: "$180K", label: "Annual Savings" }] },
+  { abbr: "OL", name: "Oberoi Law Firm", quote: "Client intake automated — lawyers spend more time in court, less on admin.", img: "/assets/LawFirms-Cfw3No_8.jpg", stats: [{ val: "78%", label: "Admin Time Saved" }, { val: "92%", label: "Calls Answered" }, { val: "24/7", label: "Availability" }, { val: "$240K", label: "Annual Savings" }] },
+  { abbr: "C21", name: "Century 21", quote: "Property research automated at scale — analysts focus on closing deals.", img: "/assets/Real_Estate-daXMW61t.jpg", stats: [{ val: "90%", label: "Data Extraction" }, { val: "85%", label: "Time Saved" }, { val: "50K+", label: "Properties" }, { val: "$2.8M", label: "Annual Savings" }] },
+  { abbr: "LP", name: "LogisticsPro", quote: "End-to-end logistics automation — manual processing virtually eliminated.", img: "/assets/Case_study_background_4_6d1a48d7-DbLnm7dm.png", stats: [{ val: "95%", label: "Automation Rate" }, { val: "70%", label: "Time Saved" }, { val: "1K+", label: "Routes" }, { val: "$5M", label: "Annual Savings" }] },
 ];
 
 export default function Home() {
   return (
-    <div className="bg-black">
-      {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
-        {/* Background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/hero_bg.png')" }}
-        />
-        <div className="absolute inset-0 bg-black/75" />
+    <div style={{ background: "var(--navy)" }}>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left — Text */}
+      {/* ── HERO ── */}
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-[72px] hero-grid">
+        {/* Ambient orbs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 right-1/3 w-[600px] h-[600px] rounded-full glow-pulse"
+            style={{ background: "radial-gradient(circle, rgba(0,198,167,0.07) 0%, transparent 65%)" }} />
+          <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] rounded-full glow-pulse"
+            style={{ background: "radial-gradient(circle, rgba(59,127,255,0.07) 0%, transparent 65%)", animationDelay: "2s" }} />
+          <div className="absolute top-1/3 left-1/2 w-[300px] h-[300px] rounded-full"
+            style={{ background: "radial-gradient(circle, rgba(124,92,252,0.05) 0%, transparent 65%)" }} />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left */}
             <div>
-              <p className="section-label mb-4">AI-Powered Business Automation</p>
-              <h1 className="text-5xl md:text-6xl font-black text-white leading-[1.05] mb-6">
-                Scale Your Business<br />
-                Faster With AI —<br />
-                <span className="text-[#c5a059]">Without the Growing Pains.</span>
+              <div className="pill mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] animate-pulse" />
+                AI-Powered Business Automation
+              </div>
+              <h1 className="text-5xl lg:text-[62px] font-extrabold leading-[1.02] tracking-tight mb-6"
+                style={{ color: "var(--text)" }}>
+                Scale Faster<br />With AI —<br />
+                <span className="gradient-text">Without the Pain.</span>
               </h1>
-              <p className="text-lg text-gray-300 mb-10 leading-relaxed">
-                Veridianaitech AI Solutions Inc. deploys intelligent voice agents, process automation,
-                and enterprise AI that answer calls, qualify leads, process documents, and run 24/7 —
-                so your team focuses on what only humans can do.
+              <p className="text-lg leading-relaxed mb-10 max-w-lg" style={{ color: "var(--text-muted)" }}>
+                Veridianaitech AI Solutions Inc. deploys intelligent voice agents, process automation, and enterprise AI that runs 24/7 — so your team focuses on what only humans can do.
               </p>
 
-              {/* Stats row */}
-              <div className="flex flex-wrap gap-10 mb-10">
-                {[
-                  { val: "70%", label: "Avg. time saved" },
-                  { val: "24/7", label: "Always-on coverage" },
-                  { val: "90 days", label: "Typical ROI timeline" },
-                ].map((s) => (
+              <div className="flex gap-10 mb-10">
+                {[{ val: "70%", label: "Avg. time saved" }, { val: "24/7", label: "Always-on" }, { val: "90 days", label: "Typical ROI" }].map((s) => (
                   <div key={s.label}>
-                    <div className="text-4xl font-black text-white">{s.val}</div>
-                    <div className="text-sm text-gray-400 mt-1">{s.label}</div>
+                    <div className="text-3xl font-black" style={{ color: "var(--text)" }}>{s.val}</div>
+                    <div className="text-xs mt-1 font-medium" style={{ color: "var(--text-muted)" }}>{s.label}</div>
                   </div>
                 ))}
               </div>
 
-              <Link href="/contact" className="gold-btn text-base px-8 py-4">
-                Book a Free Demo
-              </Link>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/contact" className="btn-primary"><span>Book a Free Demo</span></Link>
+                <Link href="/solutions" className="btn-outline">View Solutions</Link>
+              </div>
             </div>
 
-            {/* Right — AI Brain Image */}
+            {/* Right — AI Brain */}
             <div className="flex items-center justify-center">
-              <div className="relative w-[480px] h-[480px] max-w-full">
-                {/* Outer glow ring */}
-                <div className="absolute inset-0 rounded-full bg-[#c5a059]/5 blur-3xl scale-110" />
-                <div className="absolute inset-4 rounded-full border border-[#c5a059]/10 animate-pulse" />
+              <div className="relative w-[440px] h-[440px] max-w-full">
+                <div className="absolute inset-0 rounded-full glow-pulse"
+                  style={{ background: "radial-gradient(circle, rgba(0,198,167,0.08) 0%, transparent 65%)" }} />
+                <div className="absolute inset-8 rounded-full" style={{ border: "1px solid rgba(0,198,167,0.12)" }} />
                 <Image
                   src="/assets/ai_brain.png"
-                  alt="Veridianaitech AI Intelligence"
-                  width={480}
-                  height={480}
-                  className="relative z-10 w-full h-full object-contain drop-shadow-[0_0_60px_rgba(100,80,255,0.5)]"
+                  alt="Veridianaitech AI"
+                  width={440} height={440}
+                  className="relative z-10 w-full h-full object-contain"
+                  style={{ filter: "drop-shadow(0 0 80px rgba(0,198,167,0.25)) drop-shadow(0 0 40px rgba(59,127,255,0.2))" }}
                   priority
                 />
               </div>
@@ -211,105 +106,111 @@ export default function Home() {
       </section>
 
       {/* ── TRUSTED BY ── */}
-      <section className="py-10 border-y border-white/5 overflow-hidden bg-[#0a0a0a]">
-        <p className="text-center text-xs font-bold tracking-[0.2em] uppercase text-gray-500 mb-8">
-          Trusted by businesses across North America.
+      <div className="divider" />
+      <section className="py-10 overflow-hidden" style={{ background: "var(--navy-2)" }}>
+        <p className="text-center text-[10px] font-bold tracking-[0.22em] uppercase mb-8"
+          style={{ color: "var(--text-muted)" }}>
+          Trusted by businesses across industries
         </p>
         <div className="relative flex overflow-hidden">
-          <div className="marquee">
-            {[...clients, ...clients].map((c, i) => (
-              <div key={i} className="flex items-center gap-3 flex-shrink-0">
-                <div className="w-9 h-9 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center text-[10px] font-bold text-[#c5a059]">
-                  {c.abbr}
-                </div>
-                <span className="text-gray-400 font-medium text-sm">{c.name}</span>
+          <div className="marquee-track">
+            {[...clients, ...clients, ...clients].map((c, i) => (
+              <div key={i} className="flex items-center gap-3 flex-shrink-0 px-2">
+                <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "var(--teal)", opacity: 0.5 }} />
+                <span className="font-semibold text-sm whitespace-nowrap" style={{ color: "var(--text-muted)" }}>{c}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
+      <div className="divider" />
 
       {/* ── WHAT WE BUILD ── */}
-      <section className="py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="section-label">What We Build</p>
-            <h2 className="section-title mb-4">Six Ways We Put AI to Work<br />for Your Business</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Every engagement is designed to reduce overhead, accelerate revenue, and deliver measurable ROI — not just a line of code.
+      <section className="py-28 ambient-section dot-bg">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="eyebrow justify-center">What We Build</div>
+            <h2 className="h-section mb-4">Six Ways We Put AI<br />to Work for Your Business</h2>
+            <p className="max-w-xl mx-auto text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              Every engagement is designed to reduce overhead, accelerate revenue, and deliver measurable ROI.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whatWeBuild.map((item, i) => (
-              <div key={i} className="card-dark group">
-                <div className="w-8 h-0.5 bg-[#c5a059] mb-5 group-hover:w-12 transition-all duration-300" />
-                <h3 className="text-white font-bold text-lg mb-3">{item.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} className="glass-card group">
+                  <div className="icon-box">
+                    <Icon className="w-5 h-5" style={{ color: "var(--teal)" }} />
+                  </div>
+                  <div className="accent-line" />
+                  <h3 className="font-bold text-base mb-3 leading-snug" style={{ color: "var(--text)" }}>{item.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      <div className="divider" />
 
       {/* ── PLATFORM CAPABILITIES ── */}
-      <section className="py-24 bg-[#080808]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="section-label">Platform Capabilities</p>
-            <h2 className="section-title mb-4">Six Capabilities That Cut Costs<br />and Drive Growth</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Precision automation that replaces manual work, surfaces better decisions, and scales as fast as your ambitions.
+      <section className="py-28" style={{ background: "var(--navy-2)" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="eyebrow justify-center">Platform Capabilities</div>
+            <h2 className="h-section mb-4">Capabilities That Cut Costs<br />and Drive Growth</h2>
+            <p className="max-w-xl mx-auto text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              Precision automation that replaces manual work and scales as fast as your ambitions.
             </p>
           </div>
-
-          {/* Live Animated Dashboard */}
-          <div className="mb-14">
-            <LiveDashboard />
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-16"><LiveDashboard /></div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {capabilities.map((item, i) => (
-              <div key={i} className="card-dark group">
-                <div className="w-8 h-0.5 bg-[#c5a059] mb-5 group-hover:w-12 transition-all duration-300" />
-                <h3 className="text-white font-bold text-lg mb-3">{item.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+              <div key={i} className="glass-card group">
+                <div className="accent-line" />
+                <h3 className="font-bold text-base mb-3 leading-snug" style={{ color: "var(--text)" }}>{item.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CLIENT RESULTS ── */}
-      <section className="py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="section-label">Client Results</p>
-            <h2 className="section-title mb-4">Real Businesses, Measurable Savings</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Every number below comes from a live Veridianaitech AI Solutions Inc. deployment — not a projection, not an estimate.
-            </p>
-          </div>
+      <div className="divider" />
+      <HowItWorks />
+      <div className="divider" />
 
-          <div className="grid md:grid-cols-2 gap-8">
+      {/* ── CLIENT RESULTS ── */}
+      <section className="py-28 ambient-section" style={{ background: "var(--navy)" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="eyebrow justify-center">Client Results</div>
+            <h2 className="h-section mb-4">Real Businesses,<br />Measurable Savings</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
             {caseStudies.map((cs, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden border border-white/10 bg-[#0d0d0d]">
-                <div className="h-52 relative overflow-hidden">
-                  <Image src={cs.img} alt={cs.name} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent" />
-                  <div className="absolute bottom-4 left-6 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#c5a059]/20 border border-[#c5a059]/40 flex items-center justify-center text-xs font-black text-[#c5a059]">
+              <div key={i} className="rounded-2xl overflow-hidden group transition-all duration-300 glow-border hover:border-[rgba(0,198,167,0.3)]"
+                style={{ background: "var(--navy-2)" }}>
+                <div className="h-48 relative overflow-hidden">
+                  <Image src={cs.img} alt={cs.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--navy-2), transparent)" }} />
+                  <div className="absolute bottom-4 left-5 flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-black"
+                      style={{ background: "rgba(0,198,167,0.15)", border: "1px solid rgba(0,198,167,0.35)", color: "var(--teal)" }}>
                       {cs.abbr}
                     </div>
-                    <span className="font-bold text-white text-lg">{cs.name}</span>
+                    <span className="font-bold" style={{ color: "var(--text)" }}>{cs.name}</span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <p className="text-gray-400 italic mb-6 text-sm leading-relaxed">"{cs.quote}"</p>
-                  <div className="grid grid-cols-4 gap-3">
+                  <p className="italic mb-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>&ldquo;{cs.quote}&rdquo;</p>
+                  <div className="grid grid-cols-4 gap-3 pt-4" style={{ borderTop: "1px solid rgba(100,150,255,0.08)" }}>
                     {cs.stats.map((st, j) => (
                       <div key={j} className="text-center">
-                        <div className="text-xl font-black text-[#c5a059]">{st.val}</div>
-                        <div className="text-[10px] text-gray-500 mt-0.5 leading-tight">{st.label}</div>
+                        <div className="text-lg font-black gradient-text">{st.val}</div>
+                        <div className="text-[10px] mt-1 leading-tight" style={{ color: "var(--text-muted)" }}>{st.label}</div>
                       </div>
                     ))}
                   </div>
@@ -320,99 +221,102 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS — TABBED ── */}
-      <HowItWorks />
+      <div className="divider" />
 
-      {/* ── WHY US ── */}
-      <section className="py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="section-label">Why Veridianaitech</p>
-            <h2 className="section-title mb-4">The AI Partner That Proves ROI,<br />Not Just Potential</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">
-              Every metric below comes from live Veridianaitech AI Solutions Inc. client deployments — not marketing projections.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="card-dark">
-              <h3 className="text-[#c5a059] font-bold text-sm uppercase tracking-widest mb-5">Numbers Business Owners Care About</h3>
-              <ul className="space-y-3">
-                {whyUs.map((pt, i) => (
-                  <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
-                    <Check className="w-4 h-4 text-[#c5a059] mt-0.5 flex-shrink-0" />
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="card-dark">
-              <h3 className="text-[#c5a059] font-bold text-sm uppercase tracking-widest mb-5">Hands-On Support, Not a Help Ticket Queue</h3>
-              <ul className="space-y-3">
-                {handson.map((pt, i) => (
-                  <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
-                    <Check className="w-4 h-4 text-[#c5a059] mt-0.5 flex-shrink-0" />
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="card-dark">
-              <h3 className="text-[#c5a059] font-bold text-sm uppercase tracking-widest mb-5">Built for Speed — From Sign-Off to Go-Live</h3>
-              <ul className="space-y-3">
-                {speed.map((pt, i) => (
-                  <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
-                    <Check className="w-4 h-4 text-[#c5a059] mt-0.5 flex-shrink-0" />
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Big stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-b border-white/5">
+      {/* ── BIG STATS ── */}
+      <section className="py-20" style={{ background: "var(--navy-2)" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { val: "500+", label: "Businesses Automated" },
               { val: "10M+", label: "Tasks Automated Monthly" },
               { val: "70%", label: "Average Time Saved" },
               { val: "$100M+", label: "Total Client Savings" },
             ].map((s, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-white mb-2">{s.val}</div>
-                <div className="text-sm text-gray-500">{s.label}</div>
+              <div key={i} className="text-center group">
+                <div className="stat-num">{s.val}</div>
+                <div className="stat-label">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── NEWSLETTER / CTA ── */}
-      <section className="py-24 bg-[#080808] border-t border-white/5">
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <p className="section-label">Free AI Playbook</p>
-          <h2 className="section-title mb-4">Get the AI Playbook Your<br />Competitors Don't Have</h2>
-          <p className="text-gray-400 mb-8">
-            Monthly briefings: real client automation wins, ROI case breakdowns, and the exact AI tools Veridianaitech AI Solutions Inc. is deploying right now. No fluff, no spam.
+      <div className="divider" />
+
+      {/* ── WHY US ── */}
+      <section className="py-28 ambient-section dot-bg" style={{ background: "var(--navy)" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="eyebrow justify-center">Why Veridianaitech</div>
+            <h2 className="h-section mb-4">The AI Partner That Proves ROI,<br />Not Just Potential</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              { title: "Numbers Business Owners Care About", pts: ["70% average reduction in manual task time", "60% lower operational overhead", "95% automation success rate across deployments", "Positive ROI within 90 days — guaranteed"] },
+              { title: "Hands-On Support, Not a Help Ticket Queue", pts: ["Dedicated success manager from day one", "Free white-glove implementation assistance", "Personalised onboarding and staff training", "Proactive optimisation — we don't wait to be asked"] },
+              { title: "Built for Speed — From Sign-Off to Go-Live", pts: ["Live in days, not months — no long IT projects", "AI trained on your business, not a generic template", "Iterative improvements based on real data", "Scales instantly as your business grows"] },
+            ].map((col, i) => (
+              <div key={i} className="glass-card">
+                <div className="accent-line" />
+                <h3 className="font-bold text-xs uppercase tracking-widest mb-5" style={{ color: "var(--teal)" }}>{col.title}</h3>
+                <ul className="space-y-3">
+                  {col.pts.map((pt, j) => (
+                    <li key={j} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--teal)" }} />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* ── NEWSLETTER ── */}
+      <section className="py-24" style={{ background: "var(--navy-2)" }}>
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <div className="eyebrow justify-center">Free AI Playbook</div>
+          <h2 className="h-section mb-4">Get the AI Playbook Your<br />Competitors Don&apos;t Have</h2>
+          <p className="mb-10 leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Monthly briefings: real client automation wins, ROI case breakdowns, and the exact AI tools we&apos;re deploying right now. No fluff, no spam.
           </p>
           <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Your business email address"
-              className="flex-1 px-5 py-3.5 bg-[#111] border border-white/10 rounded-full text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#c5a059]/50"
+            <input type="email" placeholder="Your business email address"
+              className="flex-1 px-5 py-3.5 rounded-full text-sm focus:outline-none transition-colors"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(100,150,255,0.12)", color: "var(--text)" }}
             />
-            <button type="submit" className="gold-btn whitespace-nowrap">Send Me the Playbook</button>
+            <button type="submit" className="btn-primary whitespace-nowrap"><span>Get the Playbook</span></button>
           </form>
-          <p className="text-gray-600 text-xs">No spam. Unsubscribe in one click, any time.</p>
+          <p className="text-xs" style={{ color: "var(--text-muted)", opacity: 0.5 }}>No spam. Unsubscribe any time.</p>
         </div>
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="py-20 bg-black border-t border-white/5 text-center">
-        <p className="section-label mb-4">READY TO AUTOMATE?</p>
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-4">See AI Agents Running Live in Your Industry</h2>
-        <Link href="/contact" className="gold-btn text-base mt-4">Book a Free Demo</Link>
+      <section className="py-24 hero-grid" style={{ background: "var(--navy)" }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="eyebrow justify-center">Ready to Automate?</div>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight" style={{ color: "var(--text)" }}>
+            See AI Agents Running Live<br />in Your Industry
+          </h2>
+          <p className="mb-10 text-lg" style={{ color: "var(--text-muted)" }}>
+            30-minute demo. Custom automation roadmap. No commitment required.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="btn-primary text-base px-10 py-4">
+              <span>Book a Free Demo</span>
+              <ArrowRight className="w-4 h-4" style={{ position: "relative" }} />
+            </Link>
+            <Link href="/solutions" className="btn-outline text-base px-10 py-4">
+              Explore Solutions
+            </Link>
+          </div>
+        </div>
       </section>
+
     </div>
   );
 }

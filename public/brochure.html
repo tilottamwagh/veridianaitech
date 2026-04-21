@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Veridianaitech AI Solutions Inc. — Company Brochure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
+
+  /* ── PRINT PAGES ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 20px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  @media print {
+    body { margin: 0; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; }
+    .no-print { display: none; }
+  }
+
+  /* ── COLORS ── */
+  :root {
+    --teal: #00c6a7;
+    --teal-bright: #00ffe5;
+    --navy: #060d1f;
+    --dark: #0b1630;
+    --gray: #666;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .cover-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50mm 20mm 20mm;
+    position: relative;
+  }
+
+  .cover-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 80mm;
+    height: 80mm;
+    background: radial-gradient(circle at top right, rgba(0,198,167,0.15), transparent 70%);
+  }
+
+  .cover-line {
+    width: 20mm;
+    height: 1.5px;
+    background: var(--teal);
+    margin-bottom: 8mm;
+  }
+
+  .cover-tag {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6mm;
+  }
+
+  .cover-title {
+    font-size: 36pt;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 8mm;
+  }
+
+  .cover-title span { color: var(--teal); }
+
+  .cover-sub {
+    font-size: 11pt;
+    color: #aaa;
+    max-width: 130mm;
+    line-height: 1.7;
+    margin-bottom: 12mm;
+  }
+
+  .cover-cta {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-weight: 800;
+    font-size: 10pt;
+    padding: 4mm 10mm;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 10mm;
+    padding: 10mm 20mm;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .cover-stat .val { font-size: 22pt; font-weight: 900; color: #fff; }
+  .cover-stat .lbl { font-size: 8pt; color: #777; margin-top: 1mm; }
+
+  .cover-footer {
+    background: rgba(0,198,167,0.08);
+    border-top: 1px solid rgba(0,198,167,0.2);
+    padding: 7mm 20mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text .name { font-size: 15pt; font-weight: 900; color: #fff; }
+  .logo-text .sub { font-size: 7pt; font-weight: 700; letter-spacing: 3px; color: var(--teal); text-transform: uppercase; }
+  .cover-footer-contact { font-size: 8pt; color: #888; text-align: right; line-height: 1.8; }
+
+  /* ── INNER PAGES ── */
+  .inner { background: #fff; padding: 20mm; }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6mm;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 10mm;
+  }
+
+  .page-header .brand { font-size: 9pt; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+  .page-header .brand span { color: var(--teal); }
+  .page-header .pg { font-size: 8pt; color: #bbb; font-weight: 600; }
+
+  .section-tag {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 3mm;
+  }
+
+  .section-title {
+    font-size: 22pt;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 5mm;
+  }
+
+  .section-body {
+    font-size: 10pt;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 8mm;
+  }
+
+  /* ── CARDS ── */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 6mm; }
+  .card {
+    border: 1.5px solid #f0f0f0;
+    border-radius: 4mm;
+    padding: 6mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1mm; height: 100%;
+    background: var(--teal);
+  }
+  .card-title { font-size: 10pt; font-weight: 800; color: var(--navy); margin-bottom: 2mm; }
+  .card-body { font-size: 8.5pt; color: #666; line-height: 1.65; }
+
+  /* ── SERVICES DARK ── */
+  .services-dark { background: var(--navy); padding: 20mm; min-height: 297mm; }
+  .services-dark .section-title { color: #fff; }
+  .services-dark .section-body { color: #aaa; }
+
+  .service-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4mm;
+    padding: 6mm 7mm;
+    margin-bottom: 4mm;
+    background: rgba(255,255,255,0.03);
+  }
+  .service-card-head { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; }
+  .service-num { font-size: 8pt; font-weight: 900; color: var(--teal); opacity: 0.5; width: 7mm; }
+  .service-title { font-size: 11pt; font-weight: 800; color: #fff; }
+  .service-body { font-size: 8.5pt; color: #888; line-height: 1.65; padding-left: 10mm; }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--teal);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: 10mm 20mm;
+  }
+  .stat-item { text-align: center; padding: 4mm; border-right: 1px solid rgba(0,0,0,0.15); }
+  .stat-item:last-child { border-right: none; }
+  .stat-val { font-size: 22pt; font-weight: 900; color: #000; }
+  .stat-lbl { font-size: 7.5pt; color: rgba(0,0,0,0.6); margin-top: 1mm; font-weight: 600; }
+
+  /* ── CASE STUDY ── */
+  .case-study {
+    border-radius: 4mm;
+    overflow: hidden;
+    margin-bottom: 6mm;
+    border: 1.5px solid #f0f0f0;
+  }
+  .cs-header {
+    background: var(--navy);
+    padding: 4mm 6mm;
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+  .cs-avatar {
+    width: 9mm; height: 9mm;
+    border-radius: 50%;
+    background: rgba(0,198,167,0.2);
+    border: 1px solid var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7pt; font-weight: 900; color: var(--teal);
+    flex-shrink: 0;
+  }
+  .cs-name { font-size: 10pt; font-weight: 800; color: #fff; }
+  .cs-body { padding: 5mm 6mm; background: #fafafa; }
+  .cs-quote { font-size: 9pt; color: #555; font-style: italic; margin-bottom: 4mm; line-height: 1.6; }
+  .cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+  .cs-stat-val { font-size: 13pt; font-weight: 900; color: var(--teal); }
+  .cs-stat-lbl { font-size: 7pt; color: #888; margin-top: 0.5mm; }
+
+  /* ── CONTACT PAGE ── */
+  .contact-page { background: var(--navy); display: flex; flex-direction: column; }
+  .contact-top { flex: 1; padding: 20mm; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin-top: 8mm; }
+  .contact-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4mm; padding: 7mm; }
+  .contact-card-label { font-size: 7.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 3mm; }
+  .contact-card-val { font-size: 9.5pt; color: #ccc; line-height: 1.8; }
+
+  .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 6mm; }
+  .value-item { padding: 5mm; border-left: 2px solid var(--teal); }
+  .value-title { font-size: 10pt; font-weight: 800; color: #fff; margin-bottom: 2mm; }
+  .value-body { font-size: 8.5pt; color: #888; line-height: 1.6; }
+
+  .contact-bottom {
+    background: var(--teal);
+    padding: 8mm 20mm;
+    text-align: center;
+  }
+  .contact-bottom p { font-size: 9pt; font-weight: 700; color: #000; }
+  .contact-bottom .tagline { font-size: 14pt; font-weight: 900; color: #000; margin-top: 2mm; }
+
+  /* ── PRINT BTN ── */
+  .print-bar {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    z-index: 999;
+  }
+  .print-btn {
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0,198,167,0.4);
+    transition: transform 0.2s;
+  }
+  .print-btn:hover { transform: scale(1.05); }
+</style>
+</head>
+<body>
+
+<!-- PRINT BUTTON -->
+<div class="print-bar no-print">
+  <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PAGE 1 — COVER                                 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="cover-accent"></div>
+    <div class="cover-line"></div>
+    <div class="cover-tag">Company Profile 2026</div>
+    <h1 class="cover-title">
+      AI That Works<br>
+      While You Sleep<br>
+      <span>— 24/7, 365.</span>
+    </h1>
+    <p class="cover-sub">
+      Veridianaitech AI Solutions Inc. deploys intelligent voice agents, process automation,
+      and enterprise AI that answers calls, qualifies leads, processes documents, and runs
+      around the clock — so your team focuses on what only humans can do.
+    </p>
+    <div class="cover-cta">veridianaitech.com</div>
+  </div>
+
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <div class="val">70%</div>
+      <div class="lbl">Avg. Time Saved</div>
+    </div>
+    <div class="cover-stat">
+      <div class="val">24/7</div>
+      <div class="lbl">Always-On Coverage</div>
+    </div>
+    <div class="cover-stat">
+      <div class="val">90 Days</div>
+      <div class="lbl">Typical ROI Timeline</div>
+    </div>
+    <div class="cover-stat">
+      <div class="val">95%</div>
+      <div class="lbl">Automation Success Rate</div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="logo-text">
+      <span class="name">Veridianaitech</span>
+      <span class="sub">AI Solutions Inc.</span>
+    </div>
+    <div class="cover-footer-contact">
+      Kalyani Nagar, Pune, Maharashtra, India<br>
+      +91 9168693209 / +91 8830599371<br>
+      support@veridianaitech.com
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PAGE 2 — ABOUT                                 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="brand">Veridianaitech <span>AI Solutions Inc.</span></div>
+    <div class="pg">About Us · 02</div>
+  </div>
+
+  <div class="section-tag">Who We Are</div>
+  <h2 class="section-title">We are on a Mission to<br>Democratize Business Automation</h2>
+  <p class="section-body">
+    Veridianaitech AI Solutions Inc. was born from a simple frustration: powerful AI automation existed,
+    but it was complex, expensive, and built only for enterprises with dedicated IT teams. We set out to
+    change that — building an intelligent automation platform powerful enough for enterprises, yet simple
+    enough for small teams. No coding. No massive implementation projects. Just automation that works.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-title">Our Mission</div>
+      <div class="card-body">To empower businesses worldwide with intelligent automation that saves time, reduces costs, and frees people to focus on work that truly matters.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Our Vision</div>
+      <div class="card-body">A world where every business — from solo entrepreneurs to large enterprises — can harness the power of AI without complexity or massive budgets.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Customer Success First</div>
+      <div class="card-body">We measure our success by the time and money we save our clients. Every automation is designed to deliver measurable ROI from week one.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Human-Centered Automation</div>
+      <div class="card-body">Automation should free people to do meaningful work, not replace them. We help teams focus on creativity, strategy, and human connection.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Innovation & Simplicity</div>
+      <div class="card-body">We make cutting-edge AI technology accessible to businesses of all sizes. Powerful automation should not require a PhD to implement.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Accessibility for All</div>
+      <div class="card-body">Whether you are a startup or enterprise, you deserve world-class automation. We are democratizing AI to level the playing field.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PAGE 3 — SERVICES                              -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page services-dark">
+  <div class="page-header" style="border-bottom-color: rgba(255,255,255,0.07);">
+    <div class="brand" style="color:#fff;">Veridianaitech <span>AI Solutions Inc.</span></div>
+    <div class="pg" style="color:#555;">Our Solutions · 03</div>
+  </div>
+
+  <div class="section-tag">What We Build</div>
+  <h2 class="section-title">AI Solutions Engineered<br>for Real Business Outcomes</h2>
+  <p class="section-body">Every solution is designed to reduce overhead, accelerate revenue, and deliver measurable ROI — not just a line of code.</p>
+
+  <div class="service-card">
+    <div class="service-card-head"><div class="service-num">01</div><div class="service-title">AI Sales Agent — Selesa</div></div>
+    <div class="service-body">Automate outbound/inbound sales calls, qualify leads 24/7, book meetings, and sync everything to your CRM. Increase qualified leads by 3x while cutting cost per lead by 60%.</div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-card-head"><div class="service-num">02</div><div class="service-title">24/7 Support Automation</div></div>
+    <div class="service-body">AI voice and chat agents that handle 95% of customer inquiries instantly — across phone, chat, email, and social. Reduce support costs by 70% while improving satisfaction scores.</div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-card-head"><div class="service-num">03</div><div class="service-title">Document Processing & Research</div></div>
+    <div class="service-body">Extract data from PDFs, invoices, contracts, and forms with 98%+ accuracy. Process 10,000+ documents per hour. Eliminate manual data entry and reduce processing costs by 85%.</div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-card-head"><div class="service-num">04</div><div class="service-title">AI-Powered CRM</div></div>
+    <div class="service-body">A CRM that works for you — auto-logs every call, scores every lead, triggers follow-ups, and forecasts revenue. Reduce CRM admin time by 70% and increase close rates by 45%.</div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-card-head"><div class="service-num">05</div><div class="service-title">Enterprise ERP AI Integration</div></div>
+    <div class="service-body">Embed AI directly into SAP, Salesforce, and Oracle — unlocking automation, predictive analytics, and 40%+ efficiency gains without a costly platform migration.</div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-card-head"><div class="service-num">06</div><div class="service-title">Custom Software & Web Applications</div></div>
+    <div class="service-body">Bespoke applications, enterprise web portals, iOS/Android apps, and quality assurance — engineered to your workflows, built to scale, delivered on schedule.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PAGE 4 — RESULTS                               -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="brand">Veridianaitech <span>AI Solutions Inc.</span></div>
+    <div class="pg">Client Results · 04</div>
+  </div>
+
+  <div class="section-tag">Proven Results</div>
+  <h2 class="section-title">Real Businesses.<br>Measurable Savings.</h2>
+  <p class="section-body">Every number below comes from a live Veridianaitech AI Solutions Inc. deployment — not a projection, not an estimate.</p>
+
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-avatar">ES</div>
+      <div class="cs-name">Elevate Spa</div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-quote">"Reception fully automated — staff now focus on guests, not phones."</div>
+      <div class="cs-stats">
+        <div><div class="cs-stat-val">80%</div><div class="cs-stat-lbl">Admin Time Saved</div></div>
+        <div><div class="cs-stat-val">95%</div><div class="cs-stat-lbl">Calls Answered</div></div>
+        <div><div class="cs-stat-val">24/7</div><div class="cs-stat-lbl">Availability</div></div>
+        <div><div class="cs-stat-val">$180K</div><div class="cs-stat-lbl">Annual Savings</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-avatar">OL</div>
+      <div class="cs-name">Oberoi Law Firm</div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-quote">"Client intake automated — lawyers spend more time in court, less on admin."</div>
+      <div class="cs-stats">
+        <div><div class="cs-stat-val">78%</div><div class="cs-stat-lbl">Admin Time Saved</div></div>
+        <div><div class="cs-stat-val">92%</div><div class="cs-stat-lbl">Calls Answered</div></div>
+        <div><div class="cs-stat-val">24/7</div><div class="cs-stat-lbl">Availability</div></div>
+        <div><div class="cs-stat-val">$240K</div><div class="cs-stat-lbl">Annual Savings</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-avatar">C21</div>
+      <div class="cs-name">Century 21 Real Estate</div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-quote">"Property research automated at scale — analysts focus on closing deals."</div>
+      <div class="cs-stats">
+        <div><div class="cs-stat-val">90%</div><div class="cs-stat-lbl">Data Automated</div></div>
+        <div><div class="cs-stat-val">85%</div><div class="cs-stat-lbl">Time Saved</div></div>
+        <div><div class="cs-stat-val">50K+</div><div class="cs-stat-lbl">Properties Analysed</div></div>
+        <div><div class="cs-stat-val">$2.8M</div><div class="cs-stat-lbl">Annual Savings</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PAGE 5 — STATS + CONTACT                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page contact-page">
+  <div class="contact-top">
+    <div class="page-header" style="border-bottom-color: rgba(255,255,255,0.07);">
+      <div class="brand" style="color:#fff;">Veridianaitech <span>AI Solutions Inc.</span></div>
+      <div class="pg" style="color:#555;">Contact · 05</div>
+    </div>
+
+    <div class="section-tag">By the Numbers</div>
+    <h2 class="section-title">The Impact Speaks<br>for Itself</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5mm;margin:6mm 0 10mm;">
+      <div style="background:rgba(0,198,167,0.07);border:1px solid rgba(0,198,167,0.2);border-radius:4mm;padding:6mm;text-align:center;">
+        <div style="font-size:26pt;font-weight:900;color:#fff;">500+</div>
+        <div style="font-size:8pt;color:#888;margin-top:1mm;">Businesses Automated</div>
+      </div>
+      <div style="background:rgba(0,198,167,0.07);border:1px solid rgba(0,198,167,0.2);border-radius:4mm;padding:6mm;text-align:center;">
+        <div style="font-size:26pt;font-weight:900;color:#fff;">10M+</div>
+        <div style="font-size:8pt;color:#888;margin-top:1mm;">Tasks Automated Monthly</div>
+      </div>
+      <div style="background:rgba(0,198,167,0.07);border:1px solid rgba(0,198,167,0.2);border-radius:4mm;padding:6mm;text-align:center;">
+        <div style="font-size:26pt;font-weight:900;color:#fff;">70%</div>
+        <div style="font-size:8pt;color:#888;margin-top:1mm;">Average Time Saved</div>
+      </div>
+      <div style="background:rgba(0,198,167,0.07);border:1px solid rgba(0,198,167,0.2);border-radius:4mm;padding:6mm;text-align:center;">
+        <div style="font-size:26pt;font-weight:900;color:#fff;">$100M+</div>
+        <div style="font-size:8pt;color:#888;margin-top:1mm;">Total Client Savings</div>
+      </div>
+    </div>
+
+    <div class="section-tag">Get in Touch</div>
+    <h2 class="section-title">Ready to Automate<br>Your Business?</h2>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-label">📍 Headquarters</div>
+        <div class="contact-card-val">Kalyani Nagar, Pune<br>Maharashtra, India</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">📞 Phone</div>
+        <div class="contact-card-val">+91 9168693209<br>+91 8830599371</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">✉️ Email</div>
+        <div class="contact-card-val">support@veridianaitech.com</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">🌐 Website</div>
+        <div class="contact-card-val">veridianaitech.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-bottom">
+    <p>Book a free 30-minute AI automation demo for your business</p>
+    <div class="tagline">veridianaitech.com/contact</div>
+  </div>
+</div>
+
+</body>
+</html>

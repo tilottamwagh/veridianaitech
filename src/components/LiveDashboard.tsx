@@ -20,7 +20,7 @@ function useCounter(target: number, duration = 2000, active = false) {
 }
 
 // Animated SVG line chart
-function LiveLineChart({ color = "#c5a059", height = 80 }: { color?: string; height?: number }) {
+function LiveLineChart({ color = "#00c6a7", height = 80 }: { color?: string; height?: number }) {
   const [points, setPoints] = useState<number[]>([20, 45, 30, 60, 40, 70, 55, 80, 60, 75, 65, 90]);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,10 +78,10 @@ function LiveBarChart() {
     <div className="flex items-end gap-1.5 h-28 w-full">
       {bars.map((b, i) => (
         <div key={i} className="flex flex-col items-center gap-1 flex-1">
-          <span className="text-[8px] text-[#c5a059] font-bold">{vals[i]}</span>
+          <span className="text-[8px] text-[#00c6a7] font-bold">{vals[i]}</span>
           <div
             className="w-full rounded-sm transition-all duration-700"
-            style={{ height: `${(b / max) * 90}%`, background: "linear-gradient(to top, #a07030, #c5a059)" }}
+            style={{ height: `${(b / max) * 90}%`, background: "linear-gradient(to top, #00c6a7, #00c6a7)" }}
           />
           <span className="text-[7px] text-gray-500 text-center leading-tight">{stages[i]}</span>
         </div>
@@ -92,9 +92,9 @@ function LiveBarChart() {
 
 // Scrolling call log
 const callLogs = [
-  { time: "10:45 AM", type: "Outbound", contact: "Alice Wu", company: "Apex Dynamics", dur: "14 min", note: "Highly interested — Enterprise Tier", color: "#c5a059" },
+  { time: "10:45 AM", type: "Outbound", contact: "Alice Wu", company: "Apex Dynamics", dur: "14 min", note: "Highly interested — Enterprise Tier", color: "#00c6a7" },
   { time: "10:15 AM", type: "Inbound", contact: "David Lee", company: "Tech Solutions", dur: "9 min", note: "Follow-up scheduled", color: "#4ade80" },
-  { time: "09:52 AM", type: "Outbound", contact: "Sara Khan", company: "BlueWave Inc.", dur: "7 min", note: "Demo booked for Friday", color: "#c5a059" },
+  { time: "09:52 AM", type: "Outbound", contact: "Sara Khan", company: "BlueWave Inc.", dur: "7 min", note: "Demo booked for Friday", color: "#00c6a7" },
   { time: "09:30 AM", type: "Inbound", contact: "Mark Ray", company: "Orion Group", dur: "12 min", note: "Pricing query resolved", color: "#4ade80" },
 ];
 
@@ -156,24 +156,24 @@ export default function LiveDashboard() {
   return (
     <div
       ref={ref}
-      className="w-full rounded-2xl overflow-hidden border border-[#c5a059]/30 bg-[#0d0d0d] shadow-2xl shadow-black/60"
+      className="w-full rounded-2xl overflow-hidden border border-[#00c6a7]/30 bg-[#0d0d0d] shadow-2xl shadow-black/60"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
       {/* Top bar */}
-      <div className="flex items-center justify-between px-5 py-3 bg-[#111] border-b border-white/5">
+      <div className="flex items-center justify-between px-5 py-3 bg-[#0b1630] border-b border-white/5">
         <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-md bg-[#c5a059] flex items-center justify-center text-black font-black text-xs">AI</div>
+          <div className="w-7 h-7 rounded-md bg-[#00c6a7] flex items-center justify-center text-black font-black text-xs">AI</div>
           <span className="text-white font-bold text-sm">Veridianaitech CRM</span>
-          <span className="text-[10px] px-2 py-0.5 bg-[#c5a059]/20 text-[#c5a059] rounded-full font-bold">● LIVE</span>
+          <span className="text-[10px] px-2 py-0.5 bg-[#00c6a7]/20 text-[#00c6a7] rounded-full font-bold">● LIVE</span>
         </div>
         <div className="flex gap-4 text-gray-500 text-xs font-medium">
           {["Dashboard","Pipeline","Leads","Reports"].map(t => (
-            <span key={t} className={t === "Dashboard" ? "text-[#c5a059]" : ""}>{t}</span>
+            <span key={t} className={t === "Dashboard" ? "text-[#00c6a7]" : ""}>{t}</span>
           ))}
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-[#c5a059]/20 flex items-center justify-center">
-            <span className="text-[8px] text-[#c5a059]">●</span>
+          <div className="w-5 h-5 rounded-full bg-[#00c6a7]/20 flex items-center justify-center">
+            <span className="text-[8px] text-[#00c6a7]">●</span>
           </div>
           <span className="text-gray-500 text-xs">Admin</span>
         </div>
@@ -192,34 +192,34 @@ export default function LiveDashboard() {
         {/* Top metric cards */}
         <div className="grid grid-cols-4 gap-3 mb-4">
           {/* Pipeline value with mini chart */}
-          <div className="col-span-1 bg-[#131313] rounded-xl p-3 border border-white/5">
+          <div className="col-span-1 bg-[#0f1e40] rounded-xl p-3 border border-white/5">
             <p className="text-gray-500 text-[9px] uppercase tracking-wider mb-1">Deal Pipeline Value</p>
             <p className="text-white font-black text-xl">${pipeline}M</p>
-            <div className="mt-2"><LiveLineChart color="#c5a059" height={50} /></div>
+            <div className="mt-2"><LiveLineChart color="#00c6a7" height={50} /></div>
           </div>
 
           {/* Other metrics */}
           <div className="col-span-1 grid grid-rows-2 gap-2">
-            <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+            <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
               <p className="text-gray-500 text-[9px] mb-0.5">Active Opportunities</p>
               <p className="text-white font-black text-lg">
                 {opps} <span className="text-green-400 text-[10px] font-bold">+12%</span>
               </p>
             </div>
-            <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+            <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
               <p className="text-gray-500 text-[9px] mb-0.5">Deal Pipeline Value</p>
               <p className="text-white font-black text-lg">$4.2M</p>
             </div>
           </div>
 
           <div className="col-span-1 grid grid-rows-2 gap-2">
-            <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+            <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
               <p className="text-gray-500 text-[9px] mb-0.5">Leads in Funnel</p>
               <p className="text-white font-black text-lg">
                 {leads} <span className="text-green-400 text-[10px] font-bold">+8%</span>
               </p>
             </div>
-            <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+            <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
               <p className="text-gray-500 text-[9px] mb-0.5">Time Saved</p>
               <p className="text-white font-black text-lg">{timeSaved}%</p>
             </div>
@@ -227,10 +227,10 @@ export default function LiveDashboard() {
 
           {/* Donut rings */}
           <div className="col-span-1 grid grid-cols-2 gap-2">
-            <div className="bg-[#131313] rounded-xl p-2 border border-white/5 flex items-center justify-center">
-              <DonutRing pct={70} color="#c5a059" label="AI Automation efficiency" />
+            <div className="bg-[#0f1e40] rounded-xl p-2 border border-white/5 flex items-center justify-center">
+              <DonutRing pct={70} color="#00c6a7" label="AI Automation efficiency" />
             </div>
-            <div className="bg-[#131313] rounded-xl p-2 border border-white/5 flex items-center justify-center">
+            <div className="bg-[#0f1e40] rounded-xl p-2 border border-white/5 flex items-center justify-center">
               <DonutRing pct={95} color="#4ade80" label="Workflow accuracy" />
             </div>
           </div>
@@ -238,18 +238,18 @@ export default function LiveDashboard() {
 
         {/* Middle row: bar chart + line chart */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+          <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
             <p className="text-white text-[10px] font-bold mb-3">DEAL STAGE PIPELINE</p>
             <LiveBarChart />
           </div>
-          <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+          <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
             <div className="flex items-center justify-between mb-2">
               <p className="text-white text-[10px] font-bold">MONTHLY PIPELINE PERFORMANCE</p>
             </div>
             <div className="flex justify-between text-[8px] text-gray-600 mb-1">
               {["Jan","Feb","Mar","Apr","May","Jun"].map(m => <span key={m}>{m}</span>)}
             </div>
-            <LiveLineChart color="#c5a059" height={90} />
+            <LiveLineChart color="#00c6a7" height={90} />
             <div className="flex justify-between text-[8px] text-gray-600 mt-1">
               {["$0","$2.5M","$5M","$7.5M","$10M","$12.8M"].map(v => <span key={v}>{v}</span>)}
             </div>
@@ -258,10 +258,10 @@ export default function LiveDashboard() {
 
         {/* Bottom: lead scoring + call logs */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+          <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
             <div className="flex items-center justify-between mb-2">
               <p className="text-white text-[10px] font-bold">LEAD SCORING PANEL</p>
-              <span className="text-[8px] text-[#c5a059]">Sort by High Score ▼</span>
+              <span className="text-[8px] text-[#00c6a7]">Sort by High Score ▼</span>
             </div>
             <div className="space-y-1.5">
               {[
@@ -271,14 +271,14 @@ export default function LiveDashboard() {
                 { score: 80, name: "Mark Ray", co: "NexaCorp", close: "Oct 0" },
               ].map((l, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <span className="text-[#c5a059] font-black text-[10px] w-5">{l.score}</span>
-                  <div className="w-5 h-5 rounded-full bg-[#c5a059]/20 flex items-center justify-center text-[8px] text-[#c5a059] font-bold flex-shrink-0">{l.name[0]}</div>
+                  <span className="text-[#00c6a7] font-black text-[10px] w-5">{l.score}</span>
+                  <div className="w-5 h-5 rounded-full bg-[#00c6a7]/20 flex items-center justify-center text-[8px] text-[#00c6a7] font-bold flex-shrink-0">{l.name[0]}</div>
                   <div className="flex-1 min-w-0">
                     <p className="text-white text-[9px] font-medium truncate">{l.name}</p>
                     <p className="text-gray-500 text-[8px] truncate">{l.co}</p>
                   </div>
-                  <div className="w-12 h-0.5 bg-[#c5a059]/30 rounded-full flex-shrink-0">
-                    <div className="h-full bg-[#c5a059] rounded-full" style={{ width: `${l.score}%` }} />
+                  <div className="w-12 h-0.5 bg-[#00c6a7]/30 rounded-full flex-shrink-0">
+                    <div className="h-full bg-[#00c6a7] rounded-full" style={{ width: `${l.score}%` }} />
                   </div>
                   <span className="text-[8px] text-gray-500 flex-shrink-0">{l.close}</span>
                 </div>
@@ -286,7 +286,7 @@ export default function LiveDashboard() {
             </div>
           </div>
 
-          <div className="bg-[#131313] rounded-xl p-3 border border-white/5">
+          <div className="bg-[#0f1e40] rounded-xl p-3 border border-white/5">
             <p className="text-white text-[10px] font-bold mb-2">RECENT CALL LOGS</p>
             <div className="space-y-2 overflow-hidden" style={{ maxHeight: 100 }}>
               {callLogs.map((log, i) => (

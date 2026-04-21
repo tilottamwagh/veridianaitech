@@ -1,9 +1,9 @@
 export default function Cookies() {
   return (
-    <div className="bg-black pt-20 min-h-screen">
+    <div className="bg-[var(--navy)] pt-20 min-h-screen">
       <div className="max-w-3xl mx-auto px-4 py-24">
-        <p className="section-label">Legal</p>
-        <h1 className="text-4xl font-black text-white mb-4">Cookie Policy</h1>
+        <p className="eyebrow">Legal</p>
+        <h1 className="text-4xl font-black text-[var(--text)] mb-4">Cookie Policy</h1>
         <p className="text-gray-500 text-sm mb-12">Last Updated: April 21, 2026</p>
         <div className="space-y-10">
           {[
@@ -13,8 +13,8 @@ export default function Cookies() {
             { title: "Contact", body: "For questions about our cookie practices, contact us at privacy@veridianaitech.com." },
           ].map((s, i) => (
             <div key={i}>
-              <h2 className="text-white font-bold text-xl mb-3">{s.title}</h2>
-              <p className="text-gray-400">{s.body}</p>
+              <h2 className="text-[var(--text)] font-bold text-xl mb-3">{s.title}</h2>
+              <p className="text-[var(--text-muted)]">{s.body}</p>
             </div>
           ))}
         </div>

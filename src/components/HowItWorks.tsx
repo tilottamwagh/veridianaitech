@@ -58,31 +58,28 @@ export default function HowItWorks() {
   const tab = tabs[active];
 
   return (
-    <section className="py-24 bg-[#080808]">
+    <section className="py-28 ambient-section" style={{ background: 'var(--navy-2)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-12">
-          <p className="section-label">How It Works</p>
-          <h2 className="section-title mb-4">Powerful Automation,<br />Surprisingly Simple to Deploy</h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <div className="eyebrow justify-center">How It Works</div>
+          <h2 className="h-section mb-4">Powerful Automation,<br />Surprisingly Simple to Deploy</h2>
+          <p className="max-w-xl mx-auto" style={{ color: 'var(--text-muted)' }}>
             Built for business owners who want results — not a new software project to manage.
           </p>
         </div>
 
         {/* Tab Pills */}
         <div className="flex justify-center mb-12">
-          <div className="flex gap-2 bg-[#111] border border-white/10 rounded-full p-1.5">
+          <div className="flex gap-2 rounded-full p-1.5" style={{ background: 'rgba(11,22,48,0.8)', border: '1px solid rgba(100,150,255,0.12)' }}>
             {tabs.map((t, i) => {
               const Icon = t.icon;
               return (
                 <button
                   key={t.id}
                   onClick={() => setActive(i)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
-                    active === i
-                      ? "bg-[#c5a059] text-black shadow-lg shadow-[#c5a059]/20"
-                      : "text-gray-400 hover:text-white"
-                  }`}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200`}
+                  style={active === i ? { background: 'linear-gradient(135deg, var(--teal), var(--blue))', color: '#fff' } : { color: 'var(--text-muted)' }}
                 >
                   <Icon className="w-4 h-4" />
                   {t.label}
@@ -96,25 +93,25 @@ export default function HowItWorks() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left — Text */}
           <div key={tab.id}>
-            <h3 className="text-2xl md:text-3xl font-black text-white mb-5 leading-snug">
+            <h3 className="text-2xl md:text-3xl font-black mb-5 leading-snug" style={{ color: 'var(--text)' }}>
               {tab.heading}
             </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">{tab.body}</p>
+            <p className="mb-8 leading-relaxed" style={{ color: 'var(--text-muted)' }}>{tab.body}</p>
             <ul className="space-y-3 mb-8">
               {tab.points.map((pt, i) => (
-                <li key={i} className="flex items-start gap-3 text-gray-300 text-sm">
-                  <Check className="w-5 h-5 text-[#c5a059] mt-0.5 flex-shrink-0" />
+                <li key={i} className="flex items-start gap-3 text-sm" style={{ color: 'var(--text-muted)' }}>
+                  <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'var(--teal)' }} />
                   {pt}
                 </li>
               ))}
             </ul>
-            <Link href="/contact" className="gold-btn">
-              See a Live Demo →
+            <Link href="/contact" className="btn-primary">
+              <span>See a Live Demo →</span>
             </Link>
           </div>
 
           {/* Right — Dashboard Screenshot */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
+          <div className="relative rounded-2xl overflow-hidden border border-white/[0.07] shadow-2xl shadow-black/60">
             <Image
               src={tab.image}
               alt={tab.imgAlt}

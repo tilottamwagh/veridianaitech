@@ -1,129 +1,137 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
 
 const solutions = [
-  { name: "AI Sales Agent", href: "/solutions/sales" },
-  { name: "24/7 Support Automation", href: "/solutions/support" },
-  { name: "Document Processing", href: "/solutions/document-processing" },
-  { name: "Enterprise AI CRM", href: "/solutions/ai-powered-crm" },
+  { name: "AI Sales Agent", href: "/solutions/sales", desc: "Automate lead qualification 24/7" },
+  { name: "Support Automation", href: "/solutions/support", desc: "AI-powered customer service" },
+  { name: "Document Processing", href: "/solutions/document-processing", desc: "Extract data at scale" },
+  { name: "Enterprise AI CRM", href: "/solutions/ai-powered-crm", desc: "Pipeline on autopilot" },
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dropOpen, setDropOpen] = useState(false);
+  const dropRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setSolutionsOpen(false);
-      }
+    const handler = (e: MouseEvent) => {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) setDropOpen(false);
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-black/95 backdrop-blur-md border-b border-white/5" : "bg-transparent"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none">
-            <span className="text-xl font-black text-white tracking-wide">Veridianaitech</span>
-            <span className="text-[10px] font-bold text-[#c5a059] tracking-[0.2em] uppercase">AI Solutions Inc.</span>
-          </Link>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "backdrop-blur-xl" : "bg-transparent"
+      }`} style={ scrolled ? { background: "rgba(6,13,31,0.92)", borderBottom: "1px solid rgba(100,150,255,0.08)" } : {}}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-[72px]">
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {/* Solutions Dropdown — click-based with a bridge so gap doesn't close it */}
-            <div ref={dropdownRef} className="relative">
-              <button
-                onClick={() => setSolutionsOpen((prev) => !prev)}
-                className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >
-                Solutions{" "}
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`} />
-              </button>
+            {/* Logo */}
+            <Link href="/" className="flex flex-col group">
+              <span className="text-[18px] font-black tracking-tight leading-none transition-all duration-300 group-hover:opacity-80" style={{ color: "var(--text)" }}>
+                Veridianaitech
+              </span>
+              <span className="text-[9px] font-bold tracking-[0.22em] uppercase leading-none mt-1" style={{ color: "var(--teal)", opacity: 0.8 }}>
+                AI Solutions Inc.
+              </span>
+            </Link>
 
-              {solutionsOpen && (
-                <>
-                  {/* Transparent bridge fills the gap so mouse can reach the menu */}
-                  <div className="absolute top-full left-0 w-full h-3" />
-                  <div className="absolute top-[calc(100%+8px)] left-0 w-56 bg-[#111] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                    {solutions.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        onClick={() => setSolutionsOpen(false)}
-                        className="block px-4 py-3 text-sm text-gray-300 hover:text-[#c5a059] hover:bg-white/5 transition-colors border-b border-white/5 last:border-0"
-                      >
-                        {s.name}
-                      </Link>
-                    ))}
+            {/* Desktop Links */}
+            <div className="hidden md:flex items-center gap-1">
+              <div ref={dropRef} className="relative">
+                <button onClick={() => setDropOpen(v => !v)}
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200"
+                  style={{ color: "rgba(200,210,240,0.65)" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(200,210,240,0.65)")}>
+                  Solutions
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${dropOpen ? "rotate-180" : ""}`} />
+                </button>
+
+                {dropOpen && (
+                  <div className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-72 rounded-2xl overflow-hidden shadow-2xl"
+                    style={{ background: "var(--navy-3)", border: "1px solid rgba(100,150,255,0.12)", boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,198,167,0.05)" }}>
+                    <div className="p-2">
+                      {solutions.map((s) => (
+                        <Link key={s.href} href={s.href} onClick={() => setDropOpen(false)}
+                          className="flex items-start gap-3 px-4 py-3 rounded-xl group transition-all duration-200"
+                          style={{ color: "var(--text-muted)" }}
+                          onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,198,167,0.06)"; e.currentTarget.style.color = "var(--text)"; }}
+                          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--text-muted)"; }}>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold" style={{ color: "var(--text)" }}>{s.name}</div>
+                            <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{s.desc}</div>
+                          </div>
+                          <ArrowUpRight className="w-3.5 h-3.5 mt-0.5" style={{ color: "var(--teal)", opacity: 0.5 }} />
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </>
-              )}
+                )}
+              </div>
+
+              {[{ label: "About Us", href: "/about" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" }].map((item) => (
+                <Link key={item.href} href={item.href}
+                  className="px-4 py-2 text-sm font-medium rounded-full transition-all duration-200"
+                  style={{ color: "rgba(200,210,240,0.65)" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(200,210,240,0.65)")}>
+                  {item.label}
+                </Link>
+              ))}
             </div>
 
-            <Link href="/about" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">About Us</Link>
-            <Link href="/careers" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Careers</Link>
-            <Link href="/contact" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</Link>
-          </div>
+            {/* CTA */}
+            <div className="hidden md:block">
+              <Link href="/contact" className="btn-primary text-[13px]"><span>Book a Free Demo</span></Link>
+            </div>
 
-          {/* CTA */}
-          <div className="hidden md:block">
-            <Link
-              href="/contact"
-              className="px-5 py-2.5 bg-[#c5a059] hover:bg-[#d4b870] text-black text-sm font-bold rounded-full transition-all transform hover:scale-105"
-            >
-              Book a Free Demo
-            </Link>
+            {/* Mobile toggle */}
+            <button onClick={() => setMenuOpen(v => !v)}
+              className="md:hidden w-9 h-9 flex items-center justify-center rounded-full transition-colors"
+              style={{ border: "1px solid rgba(100,150,255,0.15)", color: "var(--text)" }}>
+              {menuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
           </div>
-
-          {/* Mobile Toggle */}
-          <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-black border-t border-white/10 px-4 py-4 space-y-1">
-          <p className="text-xs text-gray-500 uppercase font-bold px-2 py-1">Solutions</p>
-          {solutions.map((s) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              onClick={() => setIsOpen(false)}
-              className="block px-2 py-2 text-gray-300 hover:text-[#c5a059] transition-colors"
-            >
-              {s.name}
-            </Link>
-          ))}
-          <div className="border-t border-white/10 mt-2 pt-2 space-y-1">
-            <Link href="/about" onClick={() => setIsOpen(false)} className="block px-2 py-2 text-gray-300 hover:text-[#c5a059]">About Us</Link>
-            <Link href="/careers" onClick={() => setIsOpen(false)} className="block px-2 py-2 text-gray-300 hover:text-[#c5a059]">Careers</Link>
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="block px-2 py-2 text-gray-300 hover:text-[#c5a059]">Contact</Link>
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 flex flex-col pt-24 px-6 pb-8" style={{ background: "rgba(6,13,31,0.98)", backdropFilter: "blur(20px)" }}>
+          <div className="space-y-1 flex-1">
+            <p className="text-[10px] font-bold tracking-[0.2em] uppercase px-3 mb-3" style={{ color: "var(--teal)", opacity: 0.6 }}>Solutions</p>
+            {solutions.map((s) => (
+              <Link key={s.href} href={s.href} onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-between px-3 py-3 rounded-xl transition-all" style={{ color: "var(--text-muted)" }}>
+                <span className="font-medium">{s.name}</span>
+                <ArrowUpRight className="w-4 h-4" style={{ color: "var(--teal)", opacity: 0.4 }} />
+              </Link>
+            ))}
+            <div className="my-4 divider" />
+            {[{ label: "About Us", href: "/about" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" }].map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-between px-3 py-3 rounded-xl transition-all" style={{ color: "var(--text-muted)" }}>
+                <span className="font-medium">{item.label}</span>
+                <ArrowUpRight className="w-4 h-4" style={{ color: "var(--teal)", opacity: 0.4 }} />
+              </Link>
+            ))}
           </div>
-          <div className="pt-2">
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="block text-center px-5 py-3 bg-[#c5a059] text-black font-bold rounded-full">
-              Book a Free Demo
-            </Link>
-          </div>
+          <Link href="/contact" onClick={() => setMenuOpen(false)} className="btn-primary w-full justify-center text-sm"><span>Book a Free Demo</span></Link>
         </div>
       )}
-    </nav>
+    </>
   );
 }
